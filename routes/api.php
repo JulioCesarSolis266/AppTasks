@@ -32,3 +32,8 @@ Route::apiResource('/V1/coordinators', CoordinatorController::class);
 Route::apiResource('/V1/tasks', TasksController::class);
 
 Route::apiResource('/V1/users', UsersController::class);
+<<<<<<< HEAD
+
+Route::apiResource('/V1/login', RolesController::class);
+=======
+>>>>>>> main

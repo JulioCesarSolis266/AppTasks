@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('company_id')
             ->references('id')
             ->on('companies')
-            ->onDelete('cascade');#Esto es para que el company_id debe ser un id existente en companies
+            ->onDelete('cascade');//si se elimina una compañia se eliminan todas las sucursales asociadas a ella
         });
     }
 

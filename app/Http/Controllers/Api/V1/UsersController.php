@@ -14,10 +14,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::All();
-        return $users;
-    }
+        $relation = User::with(['role'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
 
+        return $relation;
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -32,6 +32,7 @@ class UsersController extends Controller
     public function show(User $user)
     {
         return new UserResource($user);
+
     }
 
     /**

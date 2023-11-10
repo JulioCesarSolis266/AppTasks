@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->unsignedBigInteger('role_id')->required();#unsignedBigInterger solo numeros enteros y positivos (ej: id)
             $table->string('email')->unique();
-            $table->string('role');
             $table->date('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->foreign('role_id')
+            ->references('id')
+            ->on('roles');
         });
     }
 

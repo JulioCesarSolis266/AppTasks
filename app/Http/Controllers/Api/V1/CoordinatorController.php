@@ -14,7 +14,9 @@ class CoordinatorController extends Controller
      */
     public function index()
     {
-        return CoordinatorResource::collection(Coordinator::all());
+        $relation = Coordinator::with(['branch'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
+
+        return $relation;
     }
 
     /**

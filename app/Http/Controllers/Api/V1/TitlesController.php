@@ -2,51 +2,47 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Resources\V1\BranchResource;
+use App\Models\Title;
+use App\Http\Resources\V1\TitleResource;
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
 use Illuminate\Http\Request;
 
-class BranchesController extends Controller
-{
+class TitlesController extends Controller{
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $relation = Branch::with(['company'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
-
-        return $relation;
+        return TitleResource::collection(Title::all());
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        return new BranchResource(Branch::create($request->all()));
+        return new TitleResource(Title::create($request->all()));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Branch $branch)
+    public function show(Title $Title)
     {
-        return new BranchResource($branch);
+        return new TitleResource($Title);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Title $Title)
     {
-        if($branch->update($request->all())){
+        if($Title->update($request->all())){
             return response()->json([
-                'message' => 'Branch updated successfully'
+                'message' => 'Title updated successfully'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Branch could not be updated'
+                'message' => 'title could not be updated'
             ], 500);
         }
     }
@@ -54,15 +50,15 @@ class BranchesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Branch $branch)
+    public function destroy(Title $Title)
     {
-        if($branch->delete()){
+        if($Title->delete()){
             return response()->json([
-                'message' => 'Branch deleted successfully'
+                'message' => 'Title deleted successfully'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Branch could not be deleted'
+                'message' => 'Title could not be deleted'
             ], 500);
         }
     }

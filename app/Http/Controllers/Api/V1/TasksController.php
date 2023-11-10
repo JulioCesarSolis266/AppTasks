@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Resources\V1\TaskResource;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -13,11 +14,25 @@ class TasksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(request $request)
     {
-        return TaskResource::collection(Task::all());
+
+        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderByDesc('id')->get();// Haciendo la relacion 
+
+        return $relation;
     }
 
+    public function tasksForEmployee(Employee $employee)//
+{
+    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user'])
+        ->where ('employee_id', $employee->id)
+
+        ->orderByDesc('id')
+        ->get();
+
+    return $tasks;
+}
+    //
     /**
      * Store a newly created resource in storage.
      */

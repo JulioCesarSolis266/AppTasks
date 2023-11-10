@@ -14,6 +14,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
+
         return CompanyResource::collection(Company::all());
     }
 

@@ -1,5 +1,5 @@
 <?php
-
+// En este archivo se definen las reglas de validación para el formulario de creación de empresas.
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;

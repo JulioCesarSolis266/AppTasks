@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Resources\V1\UserResource;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,11 @@ class UsersController extends Controller
 
         return $relation;
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -29,12 +35,12 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return new UserResource($user);
+        $user = User::with('role')->find($id);
 
+        return response()->json(['data' => $user]);
     }
-
     /**
      * Update the specified resource in storage.
      */

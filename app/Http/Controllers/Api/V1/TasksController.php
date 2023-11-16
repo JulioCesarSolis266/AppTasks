@@ -17,21 +17,21 @@ class TasksController extends Controller
     public function index(request $request)
     {
 
-        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderByDesc('id')->get();// Haciendo la relacion 
+        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderByDesc('id')->get();// Haciendo la relacion
 
         return $relation;
     }
 
     public function tasksForEmployee(Employee $employee)//
-{
-    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user'])
+    {
+    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])
         ->where ('employee_id', $employee->id)
 
         ->orderByDesc('id')
         ->get();
 
     return $tasks;
-}
+    }
     //
     /**
      * Store a newly created resource in storage.
@@ -44,9 +44,12 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+
+     public function show($id)
     {
-        return new TaskResource($task);
+        $task = Task::with('employee','branch', 'coordinator', 'client', 'priority', 'status')->find($id);
+
+        return response()->json(['data' => $task]);
     }
 
     /**

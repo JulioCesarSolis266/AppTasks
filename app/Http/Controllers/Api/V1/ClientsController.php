@@ -11,7 +11,7 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        $relation = Client::with(['user', 'position', 'branch','task'])->orderByDesc('id')->get();
+        $relation = Client::with(['user', 'position', 'branch'])->orderByDesc('id')->get();
         return $relation;
     }
 
@@ -20,11 +20,11 @@ class ClientsController extends Controller
         return new ClientResource(Client::create($request->all()));
     }
 
-    public function show(Client $client)
-    {
-        return new ClientResource($client);
-    }
+    public function show ($id){
+        $client = Client::with('user','position','branch')->find($id);
 
+        return response()->json(['data' => $client]);
+    }
     public function update(Request $request, Client $client)
     {
         if ($client->update($request->all())) {

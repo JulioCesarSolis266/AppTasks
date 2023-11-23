@@ -14,7 +14,7 @@ class CoordinatorController extends Controller
      */
     public function index()
     {
-        $relation = Coordinator::with(['branch'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
+        $relation = Coordinator::with(['branch'])->orderBy('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
 
         return $relation;
     }

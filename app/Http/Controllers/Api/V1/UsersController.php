@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $relation = User::with(['role'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
+        $relation = User::with(['role'])->orderBy('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
 
         return $relation;
     }

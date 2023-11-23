@@ -17,7 +17,7 @@ class TasksController extends Controller
     public function index(request $request)
     {
 
-        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderByDesc('id')->get();// Haciendo la relacion
+        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderBy('id')->get();// Haciendo la relacion
 
         return $relation;
     }
@@ -27,7 +27,7 @@ class TasksController extends Controller
     $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])
         ->where ('employee_id', $employee->id)
 
-        ->orderByDesc('id')
+        ->orderBy('id')
         ->get();
 
     return $tasks;

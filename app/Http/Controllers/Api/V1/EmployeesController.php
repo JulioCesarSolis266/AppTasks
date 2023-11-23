@@ -12,7 +12,7 @@ class EmployeesController extends Controller
     public function index()
     {
         //Entre parentesis va el nombre de la relacion, la funcion que se encuentra en el modelo.
-        $relation = Employee::with(['user', 'genre','position','title'])->orderByDesc('id')->get();
+        $relation = Employee::with(['user', 'genre','position','title'])->orderBy('id')->get();
         return $relation;
 
     }
@@ -27,7 +27,7 @@ class EmployeesController extends Controller
     }
 
     $tasks = $employee->tasks()
-        ->with('branch', 'coordinator', 'employee') // Cargar la relación con branch, coordinator y employee.
+        ->with('branch', 'coordinator', 'employee', 'priority') // Cargar la relación con branch, coordinator y employee.
         ->get();
 
     return response()->json($tasks, 200);

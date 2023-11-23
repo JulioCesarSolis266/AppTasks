@@ -14,7 +14,7 @@ class BranchesController extends Controller
      */
     public function index()
     {
-        $relation = Branch::with(['company'])->orderByDesc('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
+        $relation = Branch::with(['company'])->orderBy('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
 
         return $relation;
     }

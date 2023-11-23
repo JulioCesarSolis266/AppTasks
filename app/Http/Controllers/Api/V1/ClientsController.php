@@ -11,7 +11,7 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        $relation = Client::with(['user', 'position', 'branch'])->orderByDesc('id')->get();
+        $relation = Client::with(['user', 'position', 'branch'])->orderBy('id')->get();
         return $relation;
     }
 

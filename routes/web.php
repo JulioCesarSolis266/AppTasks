@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return ['Laravel' => app()->version()];
-// });
+Route::get('/', function () {//Sirve para mostrar la version de laravel
+    return ['Laravel' => app()->version()];
+});
+
+Route::get('csrf-cookie', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
 
 
 

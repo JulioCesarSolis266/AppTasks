@@ -6,8 +6,7 @@ use App\Http\Resources\V1\TaskResource;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\Employee;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;// Para poder usar el request Y poder hacer la validacion
 
 class TasksController extends Controller
 {
@@ -57,17 +56,30 @@ class TasksController extends Controller
      */
     public function update (Request $request, Task $task)
     {
-        if($task->update($request->all())){
-            return response()->json([
-                'message' => 'Task updated successfully'
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'Task could not be updated'
-            ], 500);
-        }
-    }
+        $task->update($request->all());
+        return response()->json(['data' => $task]);
 
+        //to array
+        // $title = ($request->title);
+        // $toUpdate = [
+        //     'title' => 'genio el que lee',
+        //     'task_details' => 'genio el que lee',
+        // ];
+        // dd($request);
+
+        // $task->update($request->title());
+
+        // if($task->update($request->title())){
+        //     return response()->json([
+        //         'message' => 'Task updated successfully'
+        //     ], 200);
+        // } else {
+        //     return response()->json([
+        //         'message' => 'Task could not be updated',
+        //         'error' => $task
+        //     ], 500);
+        // }
+    }
     /**
      * Remove the specified resource from storage.
      */

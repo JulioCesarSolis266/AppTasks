@@ -48,6 +48,14 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2,
         ]);
 
+        User::factory()->create([
+            'name' => 'Ferretera',
+            'surname' => 'San Luis',
+            'email' =>'fs@fs.com',
+            'password' => bcrypt('123456'),
+            'role_id' => 3,
+        ]);
+
         Role::factory(2)->create();
 
         User::factory(5)->create();
@@ -77,11 +85,5 @@ class DatabaseSeeder extends Seeder
         Client::factory(3)->create();
 
         Cost::factory(3)->create();
-
-
-
-
-
-
     }
 }

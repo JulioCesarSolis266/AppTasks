@@ -31,7 +31,6 @@ use Illuminate\Auth\Events\Authenticated;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -62,8 +61,11 @@ Route::apiResource('/V1/employees', EmployeesController::class);
 
 Route::apiResource('/V1/clients', ClientsController::class);
 
+//----------------------------------------------------------------------
 Route::apiResource('/V1/tasks', TasksController::class);
 Route::get('V1/employees/{employeeId}/tasks',  [EmployeesController::class, 'task']);
+Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);
+//----------------------------------------------------------------------
 
 Route::apiResource('/V1/users', UsersController::class);
 

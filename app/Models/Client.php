@@ -34,7 +34,7 @@ class Client extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function task()
+    public function tasks()
     {
         return $this->hasMany(Task::class);
     }

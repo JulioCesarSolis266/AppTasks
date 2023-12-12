@@ -12,25 +12,26 @@ class Closure extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'number_visits',
+        'task_id',
+        'visits',
         'visit_date',
         'entry_time',
         'exit_time',
-        'workers_number',
-        'tasks_details',
+        'workers_count',
+        'tasks_done',
         'hour_cost',
-        'hours_number',
-        'total',
-        'kilometers_cost',
-        'roundtrip_kilometers',
+        'hours_count',
+        'total_hours',
+        'km_cost',
+        'roundtrip_kms',
+        'total_kms',
+        'extra_expenses',
+        'extra_expenses_cost',
+        'worker_materials',
+        'worker_materials_cost',
+        'eco_materials',
+        'eco_materials_cost',
         'total_cost',
-        'other_expenses',
-        'expenses_cost',
-        'material_provided',
-        'material_details',
-        'quantity',
-        'material_sent',
-        'task_id'
     ];
 
     public function task()

@@ -13,6 +13,5 @@ class Cost extends Model
     protected $fillable = [
         'name',
         'cost',
-        'description',
     ];
 }

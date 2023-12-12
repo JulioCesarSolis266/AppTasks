@@ -18,8 +18,7 @@ class CostFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'cost' => fake()->randomFloat(2, 0, 1000),
-            'description' => fake()->text(),
+            'cost' => fake()->randomFloat(2, 0, 1000)
         ];
     }
 }

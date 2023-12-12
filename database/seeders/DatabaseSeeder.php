@@ -20,10 +20,6 @@ use App\Models\TaskPriority;
 use App\Models\TaskStatus;
 use App\Models\Cost;
 
-
-
-
-
 class DatabaseSeeder extends Seeder
 {
     /**

@@ -15,11 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('cost');
-            $table->string('description') -> nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

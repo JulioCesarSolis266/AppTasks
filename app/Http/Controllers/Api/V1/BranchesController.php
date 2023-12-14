@@ -19,17 +19,11 @@ class BranchesController extends Controller
         return $relation;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         return new BranchResource(Branch::create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Branch $branch)
     {
         return new BranchResource($branch);

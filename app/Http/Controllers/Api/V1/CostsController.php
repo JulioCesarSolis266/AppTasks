@@ -45,5 +45,4 @@ class CostsController extends Controller
             ], 500);
         }
     }
-
 }

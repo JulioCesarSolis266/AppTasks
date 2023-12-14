@@ -11,7 +11,17 @@ class Cost extends Model
 
 
     protected $fillable = [
-        'name',
+        'item',
         'cost',
     ];
+
+    public function productDetails()
+    {
+        return $this->hasMany(ProductDetail::class);
+    }
+
+    public function closures()
+    {
+        return $this->belongsToMany(Closure::class, 'product_details');
+    }
 }

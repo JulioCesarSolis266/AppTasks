@@ -13,12 +13,14 @@ use App\Models\Client;
 use App\Models\Coordinator;
 use App\Models\Task;
 use App\Models\Closure;
+use App\Models\Cost;
 use App\Models\Position;
+use App\Models\ProductDetail;
 use App\Models\Role;
 use App\Models\Title;
 use App\Models\TaskPriority;
 use App\Models\TaskStatus;
-use App\Models\Cost;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -81,5 +83,7 @@ class DatabaseSeeder extends Seeder
         Client::factory(3)->create();
 
         Cost::factory(3)->create();
+
+        ProductDetail::factory(3)->create();
     }
 }

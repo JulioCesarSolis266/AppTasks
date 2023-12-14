@@ -9,34 +9,18 @@ use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-
         return CompanyResource::collection(Company::all());
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         return new CompanyResource(Company::create($request->all()));
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Company $company)
     {
         return new CompanyResource($company);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Company $company)
     {
         if($company->update($request->all())){
@@ -49,10 +33,6 @@ class CompaniesController extends Controller
             ], 500);
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Company $company)
     {
         if($company->delete()){

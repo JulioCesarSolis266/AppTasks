@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\CompaniesController;
 use App\Http\Controllers\Api\V1\BranchesController;
 use App\Http\Controllers\Api\V1\CoordinatorController;
+use App\Http\Controllers\Api\V1\ClosuresController;
+use App\Http\Controllers\Api\V1\ProductDetailsController;
 use App\Http\Controllers\Api\V1\TitlesController;
 use App\Http\Controllers\Api\V1\PositionsController;
 use App\Http\Controllers\Api\V1\TaskPrioritiesController;
@@ -49,9 +51,6 @@ Route::apiResource('/V1/titles', TitlesController::class);
 Route::apiResource('/V1/positions', PositionsController::class);
 //----------------------------------------------------------------------
 
-Route::apiResource('/V1/taskstatuses', TaskStatusController::class);
-Route::apiResource('/V1/taskpriorities', TaskPrioritiesController::class);
-
 Route::apiResource('/V1/priorities', TaskPrioritiesController::class);
 Route::apiResource('/V1/statuses', TaskStatusController::class);
 
@@ -67,12 +66,18 @@ Route::get('V1/employees/{employeeId}/tasks',  [EmployeesController::class, 'tas
 Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);
 //----------------------------------------------------------------------
 
+
 Route::apiResource('/V1/users', UsersController::class);
 
 Route::apiResource('/V1/costs', CostsController::class);
+
+Route::apiResource('V1/closures', ClosuresController::class);
+
+Route::apiResource('V1/products', ProductDetailsController::class);
 
 Route::post('/V1/login', [AuthenticatedSessionController::class, 'login']);
 
 Route::get('csrf-cookie', function () {
     return response()->json(['csrf_token' => csrf_token()]);
+
 });

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('closure_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedDecimal('count');
+            $table->unsignedDecimal('subtotal');
             $table->timestamps();
 
             $table->foreign('closure_id')->references('id')->on('closures')->onDelete('cascade');

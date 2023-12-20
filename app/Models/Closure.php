@@ -19,7 +19,8 @@ class Closure extends Model
         'entry_time',
         'exit_time',
         'workers_count',
-        'tasks_done',
+        'tasks_completed',
+        'total',
     ];
 
     public function task()

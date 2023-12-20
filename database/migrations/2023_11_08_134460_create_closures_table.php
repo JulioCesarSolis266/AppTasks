@@ -19,7 +19,8 @@ return new class extends Migration
             $table->time('entry_time');
             $table->time('exit_time');
             $table->integer('workers_count');
-            $table->text('tasks_completed');
+            $table->text('tasks_completed')->default('');
+            $table->decimal('total', 10, 2);
             $table->timestamps();
 
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');

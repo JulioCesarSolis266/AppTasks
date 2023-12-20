@@ -15,6 +15,7 @@ class ProductDetail extends Model
         'closure_id',
         'product_id',
         'count',
+        'subtotal',
     ];
     public function closure()
     {

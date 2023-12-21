@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('closures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('task_id')->unique();
             $table->integer('visits');
             $table->date('visit_date');
             $table->time('entry_time');

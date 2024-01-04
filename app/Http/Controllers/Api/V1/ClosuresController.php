@@ -11,7 +11,7 @@ class ClosuresController extends Controller
 {
     public function index()
     {
-        $relation = Closure::with(['task'])->orderBy('id')->get();
+        $relation = Closure::with(['task', 'coordinador', 'branch'])->orderBy('id')->get();
         return $relation;
     }
     public function store(Request $request)

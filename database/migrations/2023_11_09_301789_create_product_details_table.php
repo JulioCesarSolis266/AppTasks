@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('closure_id');
+            $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedDecimal('count');
             $table->unsignedDecimal('subtotal');
             $table->timestamps();
 
-            $table->foreign('closure_id')->references('id')->on('closures')->onDelete('cascade');
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('costs')->onDelete('cascade');
         });
     }

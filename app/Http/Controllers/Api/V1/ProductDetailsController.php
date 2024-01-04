@@ -6,25 +6,42 @@ use App\Http\Resources\V1\ProductDetailResource;
 use App\Models\ProductDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductDetailsController extends Controller
 {
     public function index()
     {
-        $relation = ProductDetail::with(['closure', 'cost'])->orderBy('id')->get();
+        $relation = ProductDetail::with(['task', 'cost'])->orderBy('id')->get();
         return $relation;
     }
     public function store(Request $request)
-    {
-        return new ProductDetailResource(ProductDetail::create($request->all()));
+{
+    try {
+        $detail = $request->all();
+        foreach ($detail['productDetails'] as $value) {
+            $productDetail = new ProductDetail();
+            $productDetail->product_id = $value['product_id'];
+            $productDetail->task_id = $value['task_id'];
+            $productDetail->count = $value['count'];
+            $productDetail->subtotal = $value['subtotal'];
+            $productDetail->save();
+        }
+        return response()->json([
+            'message' => 'Producto Creado'
+        ], 201);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
     }
-    public function show(ProductDetail $productDetail)
+}
+    public function show(ProductDetail $product)//el nombre de la variable $product debe ser igual al nombre del parametro de la ruta pero en singular.
     {
-        return new ProductDetailResource($productDetail);
+        $product = ProductDetail::with('task', 'cost')->find($product->id);
+        return new ProductDetailResource($product);
     }
-    public function update(Request $request, ProductDetail $productDetail)
+    public function update(Request $request, ProductDetail $product)
     {
-        if($productDetail->update($request->all())){
+        if($product->update($request->all())){
             return response()->json([
                 'message' => 'ProductDetail updated successfully'
             ], 200);
@@ -34,9 +51,9 @@ class ProductDetailsController extends Controller
             ], 500);
         }
     }
-    public function destroy(ProductDetail $productDetail)
+    public function destroy(ProductDetail $product)
     {
-        if($productDetail->delete()){
+        if($product->delete()){
             return response()->json([
                 'message' => 'ProductDetail deleted successfully'
             ], 200);

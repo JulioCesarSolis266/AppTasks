@@ -12,17 +12,18 @@ class ProductDetail extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'closure_id',
+        'task_id',
         'product_id',
         'count',
         'subtotal',
     ];
-    public function closure()
+    public function task()//
     {
-        return $this->belongsTo(Closure::class, 'closure_id');
+        return $this->belongsTo(Task::class, 'task_id');
     }
     public function cost()
     {
         return $this->belongsTo(Cost::class, 'product_id');
     }
+
 }

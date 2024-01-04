@@ -13,7 +13,6 @@ class Closure extends Model
 
     protected $fillable = [
         'task_id',
-        'products_details_id',
         'visits',
         'visit_date',
         'entry_time',
@@ -26,10 +25,6 @@ class Closure extends Model
     public function task()
     {
         return $this->belongsTo(Task::class, 'task_id');
-    }
-    public function productDetail()
-    {
-        return $this->hasMany('App\Models\ProductDetail');
     }
 
 }

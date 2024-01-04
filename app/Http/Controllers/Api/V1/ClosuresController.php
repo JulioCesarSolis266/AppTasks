@@ -11,7 +11,7 @@ class ClosuresController extends Controller
 {
     public function index()
     {
-        $relation = Closure::with(['task', 'productDetail'])->orderBy('id')->get();
+        $relation = Closure::with(['task'])->orderBy('id')->get();
         return $relation;
     }
     public function store(Request $request)
@@ -20,6 +20,7 @@ class ClosuresController extends Controller
     }
     public function show(Closure $closure)
     {
+        $closure = Closure::with('task')->find($closure->id);
         return new ClosureResource($closure);
     }
     public function update(Request $request, Closure $closure)

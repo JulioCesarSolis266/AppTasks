@@ -34,7 +34,7 @@ class TasksController extends Controller
 
     public function tasksForClient(Client $client)//
     {
-        $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])
+        $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status', 'company', 'closure'])
         ->where ('client_id', $client->id)
 
         ->orderBy('id')

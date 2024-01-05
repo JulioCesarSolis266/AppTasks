@@ -62,4 +62,11 @@ class Task extends Model
     {
         return $this->belongsTo(Client::class)-> with('user');
     }
+
+    public function closure()
+    {
+        return $this->hasOne(Closure::class);
+    }
+
+
 }

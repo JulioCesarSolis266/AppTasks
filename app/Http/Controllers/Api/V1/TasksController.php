@@ -60,7 +60,6 @@ class TasksController extends Controller
 
         return response()->json(['data' => $task]);
     }
-
     /**
      * Update the specified resource in storage.
      */

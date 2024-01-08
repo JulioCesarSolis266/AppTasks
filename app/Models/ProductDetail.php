@@ -15,7 +15,6 @@ class ProductDetail extends Model
         'task_id',
         'product_id',
         'count',
-        'subtotal',
     ];
     public function task()//
     {

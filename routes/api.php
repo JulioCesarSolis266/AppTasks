@@ -62,6 +62,7 @@ Route::apiResource('/V1/clients', ClientsController::class);
 
 //----------------------------------------------------------------------
 Route::apiResource('/V1/tasks', TasksController::class);
+
 Route::get('V1/employees/{employeeId}/tasks',  [EmployeesController::class, 'task']);
 Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);
 //----------------------------------------------------------------------

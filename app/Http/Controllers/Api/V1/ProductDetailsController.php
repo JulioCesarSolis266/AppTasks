@@ -34,7 +34,7 @@ class ProductDetailsController extends Controller
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
-    public function show(ProductDetail $product)//Esta variable es la que se pasa por parametro en la ruta
+    public function show(ProductDetail $product)//El nombre de la variable tiene que ser igual al nombre del parametro de la ruta. Si en la ruta dice products, aqui debe decir product y si dice product, aqui debe decir product.
     {
         $product = ProductDetail::with('task', 'cost')->find($product->id);
         return new ProductDetailResource($product);

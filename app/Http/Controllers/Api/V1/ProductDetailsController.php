@@ -24,7 +24,6 @@ class ProductDetailsController extends Controller
             $productDetail->product_id = $value['product_id'];
             $productDetail->task_id = $value['task_id'];
             $productDetail->count = $value['count'];
-            $productDetail->subtotal = $value['subtotal'];
             $productDetail->save();
         }
         return response()->json([

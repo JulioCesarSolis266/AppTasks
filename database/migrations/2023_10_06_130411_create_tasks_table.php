@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('task_details');
             $table->unsignedBigInteger('priority_id');
             $table->unsignedBigInteger('status_id');
-            $table->text('other_data');
+            $table->text('other_data')->nullable();
             $table->unsignedBigInteger('employee_id');
 
 

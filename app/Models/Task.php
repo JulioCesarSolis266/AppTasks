@@ -16,6 +16,7 @@ class Task extends Model
        'branch_id',
        'coordinator_id',
        'client_id',
+       'incident_id',
        'visit_date',
        'task_details',
        'priority_id',

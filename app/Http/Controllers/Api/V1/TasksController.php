@@ -11,10 +11,7 @@ use Illuminate\Http\Request;// Para poder usar el request Y poder hacer la valid
 
 class TasksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(request $request)
+    public function index()
     {
         $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderBy('id')->get();// Haciendo la relacion
 
@@ -23,9 +20,8 @@ class TasksController extends Controller
 
     public function tasksForEmployee(Employee $employee)//
     {
-    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])
+    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])//Los nombres colocados aca son los
         ->where ('employee_id', $employee->id)
-
         ->orderBy('id')
         ->get();
 
@@ -36,42 +32,27 @@ class TasksController extends Controller
     {
         $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status', 'company', 'closure'])
         ->where ('client_id', $client->id)
-
         ->orderBy('id')
         ->get();
 
     return $tasks;
     }
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         return new TaskResource(Task::create($request->all()));
     }
-
-    /**
-     * Display the specified resource.
-     */
-
      public function show($id)
     {
         $task = Task::with('employee','branch', 'coordinator', 'client', 'priority', 'status')->find($id);
 
         return response()->json(['data' => $task]);
     }
-    /**
-     * Update the specified resource in storage.
-     */
     public function update (Request $request, Task $task)
     {
         $task->update($request->all());
         return response()->json(['data' => $task]);
-
     }
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Task $task)
     {
         if($task->delete()){

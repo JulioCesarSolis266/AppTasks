@@ -16,7 +16,7 @@ class ClientsController extends Controller
     }
 
     public function task($clientId)// Para obtener las tareas de un cliente
-{
+    {
     // Obtener un client específico
     $client = Client::find($clientId);
     // $client = Client::where('id', $clientId)->first();

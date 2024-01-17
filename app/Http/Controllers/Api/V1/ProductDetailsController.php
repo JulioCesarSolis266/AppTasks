@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Resources\V1\ProductDetailResource;
 use App\Models\ProductDetail;
+use App\Models\Task;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -33,6 +34,14 @@ class ProductDetailsController extends Controller
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
+//Necesito poder acceder a los productos que tengan el ta
+public function task($taskId)
+{
+    $products = ProductDetail::with(['task', 'cost'])->where('task_id', $taskId)->get();
+
+    return response()->json($products);
+}
+
     public function show(ProductDetail $product)//El nombre de la variable tiene que ser igual al nombre del parametro de la ruta. Si en la ruta dice products, aqui debe decir product y si dice product, aqui debe decir product.
     {
         $product = ProductDetail::with('task', 'cost')->find($product->id);

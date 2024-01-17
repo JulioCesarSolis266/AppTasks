@@ -25,6 +25,9 @@ class ClosuresController extends Controller
     }
     public function update(Request $request, Closure $closure)
     {
+        // $closure->update($request->all());
+        // return response()->json(['data'=>$closure]);
+
         if($closure->update($request->all())){
             return response()->json([
                 'message' => 'Closure updated successfully'

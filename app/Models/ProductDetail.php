@@ -16,7 +16,7 @@ class ProductDetail extends Model
         'product_id',
         'count',
     ];
-    public function task()//
+    public function task()
     {
         return $this->belongsTo(Task::class, 'task_id')->with('branch', 'coordinator', 'client', 'priority', 'status', 'employee');
     }

@@ -64,7 +64,7 @@ Route::apiResource('/V1/clients', ClientsController::class);
 Route::apiResource('/V1/tasks', TasksController::class);
 
 Route::get('V1/employees/{employeeId}/tasks',  [EmployeesController::class, 'task']);
-Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);
+Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);//este tasks es el nombre de la funcion que esta en el controlador de clients
 //----------------------------------------------------------------------
 
 
@@ -75,7 +75,7 @@ Route::apiResource('/V1/costs', CostsController::class);
 Route::apiResource('V1/closures', ClosuresController::class);
 
 Route::apiResource('V1/products', ProductDetailsController::class);
-
+Route::get('V1/tasks/{task_id}/products', [ProductDetailsController::class, 'task']);
 Route::post('/V1/login', [AuthenticatedSessionController::class, 'login']);
 
 Route::get('csrf-cookie', function () {

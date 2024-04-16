@@ -23,7 +23,7 @@ class TaskFactory extends Factory
             'coordinator_id'=> \App\Models\Coordinator::factory()->create()->id,
             'client_id'=> \App\Models\Client::factory()->create()->id,
             'visit_date'=> fake()->datetime(),
-            'incident_id'=> fake()->numberBetween(1, 10000),
+            'incident_id'=> fake()->numberBetween(1, 100000),
             'task_details'=> fake()->text(),
             'status_id'=> \App\Models\TaskStatus::factory()->create()->id,
             'priority_id'=> \App\Models\TaskPriority::factory()->create()->id,

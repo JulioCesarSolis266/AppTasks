@@ -13,9 +13,7 @@ class Task extends Model
 
     protected $fillable = [
        'title',
-       'branch_id',
        'coordinator_id',
-       'client_id',
        'incident_id',
        'visit_date',
        'task_details',
@@ -24,25 +22,25 @@ class Task extends Model
        'other_data',
        'employee_id'
     ];
-
-    public function user()//
-    {
-        return $this->belongsTo(User::class);
-    }
+    //Creo q este no hace falta
+    // public function user()//
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
     public function employee()
     {
         return $this->belongsTo(Employee::class) -> with('user');//
     }
 
-    public function company()//relacion de la tabla task con la tabla company
-    {
-        return $this->belongsTo(Company::class);
-    }
+    // public function company()//relacion de la tabla task con la tabla company
+    // {
+    //     return $this->belongsTo(Company::class);
+    // }
 
-    public function branch()
-    {
-        return $this->belongsTo(Branch::class) ->with('company');
-    }
+    // public function branch()
+    // {
+    //     return $this->belongsTo(Branch::class) ->with('company');
+    // }
 
     public function coordinator()
     {
@@ -57,11 +55,6 @@ class Task extends Model
     public function priority()
     {
         return $this->belongsTo(TaskPriority::class);
-    }
-
-    public function client()
-    {
-        return $this->belongsTo(Client::class)-> with('user');
     }
 
     public function closure()

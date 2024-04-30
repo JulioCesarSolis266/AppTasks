@@ -18,7 +18,7 @@ class ProductDetail extends Model
     ];
     public function task()
     {
-        return $this->belongsTo(Task::class, 'task_id')->with('branch', 'coordinator', 'client', 'priority', 'status', 'employee');
+        return $this->belongsTo(Task::class, 'task_id')->with('branch', 'coordinator', 'priority', 'status', 'employee');
     }
     public function cost()
     {

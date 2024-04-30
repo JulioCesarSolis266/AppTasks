@@ -46,9 +46,6 @@ class PositionsController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Position $Position)
     {
         if($Position->delete()){

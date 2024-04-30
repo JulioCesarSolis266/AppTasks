@@ -6,32 +6,21 @@ use App\Http\Resources\V1\TaskResource;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\Employee;
-use App\Models\Client;
 use Illuminate\Http\Request;// Para poder usar el request Y poder hacer la validacion
 
 class TasksController extends Controller
 {
     public function index()
     {
-        $relation = Task::with(['employee','branch','coordinator', 'priority', 'status', 'client'])->orderBy('id')->get();// Haciendo la relacion
+        $relation = Task::with(['employee','coordinator.branch.company', 'priority', 'status'])->orderBy('id')->get();// Haciendo la relacion
 
         return $relation;
     }
 
     public function tasksForEmployee(Employee $employee)//
     {
-    $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status'])//Los nombres colocados aca son los
+    $tasks = Task::with(['employee.user', 'coordinator.branch.company','priority', 'status'])//Los nombres colocados aca son los
         ->where ('employee_id', $employee->id)
-        ->orderBy('id')
-        ->get();
-
-    return $tasks;
-    }
-
-    public function tasksForClient(Client $client)//
-    {
-        $tasks = Task::with(['employee', 'branch', 'coordinator', 'user','client', 'priority', 'status', 'company', 'closure'])
-        ->where ('client_id', $client->id)
         ->orderBy('id')
         ->get();
 
@@ -44,7 +33,7 @@ class TasksController extends Controller
     }
      public function show($id)
     {
-        $task = Task::with('employee','branch', 'coordinator', 'client', 'priority', 'status')->find($id);
+        $task = Task::with('employee', 'coordinator.branch.company', 'priority', 'status')->find($id);
 
         return response()->json(['data' => $task]);
     }

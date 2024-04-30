@@ -13,7 +13,7 @@ class TaskPriority extends Model
 
     protected $fillable = [
        'task_priority',
-         'color',
+       'color',
     ];
 
     public function tasks(){

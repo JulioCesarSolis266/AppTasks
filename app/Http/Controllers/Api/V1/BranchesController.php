@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class BranchesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $relation = Branch::with(['company'])->orderBy('id')->get();// Esta linea es la que se agrega para que se muestre la relacion
@@ -29,9 +27,6 @@ class BranchesController extends Controller
         return new BranchResource($branch);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Branch $branch)
     {
         if($branch->update($request->all())){

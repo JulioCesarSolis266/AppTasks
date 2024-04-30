@@ -12,8 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        // Aqui se agregan las rutas que no se quieren proteger con el token para que otras aplicaciones puedan acceder a ellas sin problemas
+        //Aqui se agregan las rutas que no se quieren proteger con el token para que otras aplicaciones puedan acceder a ellas sin problemas
         'csrf-cookie',
         'api/V1/login',
+        'api/v1/tasks/*',//el * es para que no importe lo que venga despues de tasks
     ];
 }

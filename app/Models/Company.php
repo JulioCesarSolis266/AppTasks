@@ -13,7 +13,8 @@ class Company extends Model
 
     protected $fillable = ['name'];
 
-    public function branches(){
+    public function branch(){
+        //cambie de branches a branch
         return $this->hasMany('App\Models\Branch');
     }
 }

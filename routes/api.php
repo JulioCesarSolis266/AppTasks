@@ -15,7 +15,6 @@ use App\Http\Controllers\Api\V1\TaskStatusController;
 use App\Http\Controllers\Api\V1\UsersController;
 use App\Http\Controllers\Api\V1\EmployeesController;
 use App\Http\Controllers\Api\V1\RolesController;
-use App\Http\Controllers\Api\V1\ClientsController;
 use App\Http\Controllers\Api\V1\GenresController;
 use App\Http\Controllers\Api\V1\CostsController;
 
@@ -58,13 +57,11 @@ Route::apiResource('/V1/genres', GenresController::class);
 
 Route::apiResource('/V1/employees', EmployeesController::class);
 
-Route::apiResource('/V1/clients', ClientsController::class);
-
 //----------------------------------------------------------------------
 Route::apiResource('/V1/tasks', TasksController::class);
 
 Route::get('V1/employees/{employeeId}/tasks',  [EmployeesController::class, 'task']);
-Route::get('V1/clients/{clientId}/tasks',  [ClientsController::class, 'task']);//este tasks es el nombre de la funcion que esta en el controlador de clients
+
 //----------------------------------------------------------------------
 
 

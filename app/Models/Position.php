@@ -16,8 +16,4 @@ class Position extends Model
     public function employees(){
         return $this->hasMany('App\Model\Employee');
     }
-
-   public function clients(){
-        return $this->hasMany('App\Model\Client');
-    }
 }

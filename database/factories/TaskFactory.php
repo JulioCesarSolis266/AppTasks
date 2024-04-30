@@ -19,9 +19,7 @@ class TaskFactory extends Factory
     {
         return [
             'title' => fake()->name(),
-            'branch_id'=> \App\Models\Branch::factory()->create()->id,
             'coordinator_id'=> \App\Models\Coordinator::factory()->create()->id,
-            'client_id'=> \App\Models\Client::factory()->create()->id,
             'visit_date'=> fake()->datetime(),
             'incident_id'=> fake()->numberBetween(1, 100000),
             'task_details'=> fake()->text(),

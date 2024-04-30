@@ -27,7 +27,7 @@ class EmployeesController extends Controller
     }
 
     $tasks = $employee->tasks()
-        ->with('branch', 'coordinator', 'employee', 'priority','client', 'status') // Cargar la relación con branch, coordinator y employee.
+        ->with('branch', 'coordinator', 'employee', 'priority', 'status') // Cargar la relación con branch, coordinator y employee.
         ->get();
 
     return response()->json($tasks, 200);

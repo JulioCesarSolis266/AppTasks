@@ -27,8 +27,4 @@ class Branch extends Model
     public function coordinator(){
         return $this->hasMany('App\Models\Coordinator');
     }
-
-    public function client(){
-        return $this->hasMany('App\Models\Client');
-    }
 }

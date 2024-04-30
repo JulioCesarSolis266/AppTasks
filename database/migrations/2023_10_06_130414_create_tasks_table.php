@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('branch_id');
+            $table->string('incident_id');
             $table->unsignedBigInteger('coordinator_id');
-            $table->unsignedBigInteger('client_id');
             $table->dateTime('visit_date');
             $table->text('task_details');
             $table->unsignedBigInteger('priority_id');
@@ -25,12 +24,11 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id');
 
 
-            $table->foreign('branch_id')->references('id')->on('branches');
+
             $table->foreign('coordinator_id')->references('id')->on('coordinators');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('priority_id')->references('id')->on('task_priorities');
             $table->foreign('status_id')->references('id')->on('task_statuses');
-            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
